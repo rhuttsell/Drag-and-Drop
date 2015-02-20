@@ -41,7 +41,6 @@ public class DragActivity extends Activity {
                 ClipData data = ClipData.newPlainText("", "");
                 DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 view.startDrag(data, shadowBuilder, view, 0);
-//                view.setVisibility(View.INVISIBLE);
                 return true;
             } else {
                 return false;
@@ -67,8 +66,6 @@ public class DragActivity extends Activity {
                     v.setBackgroundDrawable(normalShape);
                     break;
                 case DragEvent.ACTION_DROP:
-                    // Dropped, reassign View to ViewGroup
-                    View view = (View) event.getLocalState();
 
                     Drawable copyImage = getResources().getDrawable(R.mipmap.ic_launcher);
                     ImageView image = new ImageView(DragActivity.this);
@@ -77,7 +74,7 @@ public class DragActivity extends Activity {
 
                     LinearLayout container = (LinearLayout) v;
                     container.addView(image);
-//                    view.setVisibility(View.VISIBLE);
+
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     v.setBackgroundDrawable(normalShape);
